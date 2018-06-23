@@ -8,7 +8,7 @@ def get_info(ip):
     data = requests.get(url).json()
     return (data['zip'],data['city'])
 
-def addLead(requests):
+def addLead(request):
     if request.method == 'POST':
         name = request.POST['name']    
         phone = request.POST['phone']    
@@ -26,7 +26,7 @@ def addLead(requests):
     else:
         return render(request,'addLead.html')
 
-def distributor(requests):
+def distributor(request):
     leads = list(Lead.objects.filter(near__user = request.user))
     if request.method == 'POST':
         lead = request.POST['lead']
