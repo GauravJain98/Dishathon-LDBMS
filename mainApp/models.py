@@ -1,11 +1,13 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Distributor(models.Model):
-    user = models.OnetoOne(
+    user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         verbose_name = 'User',
         null = False,
+        unique = True
     )
     zipcode = models.CharField(max_length=6,null=False)
     city = models.CharField(max_length=30,null=False)
@@ -19,8 +21,9 @@ class Lead(models.Model):
     choose = models.ForeignKey(
         Distributor,
         null = True,
+        on_delete=models.CASCADE,
     )
-    near = models.ManytoMany(
+    near = models.ManyToManyField(
         Distributor,
         related_name = 'closests',
     )
