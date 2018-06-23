@@ -8,6 +8,8 @@ def get_info(ip):
     data = requests.get(url).json()
     return (data['zip'],data['city'])
 
+
+
 def addLead(request):
     if request.method == 'POST':
         name = request.POST['name']    
@@ -27,11 +29,11 @@ def addLead(request):
         return render(request,'addLead.html')
 
 def distributor(request):
-    leads = list(Lead.objects.filter(near__user = request.user))
-    if request.method == 'POST':
-        lead = request.POST['lead']
-        lead = Lead.objects.get(id = lead)
-        lead.closest = Distributor.objects.get(user = request.user)
-        lead.save() 
-    return render(request,'distributor.html',{'leads':leads})
+    if request.GET['city']:
+        leads = Lead.objects.filter(city__contains = request.GET['city']).extra(order_by = ['prize'])
+    if request.GET['ip']:
+        leads = Lead.objects.filter(city__contains = request.GET['ip']).extra(order_by = ['prize'])
+    else:
+        leads = Lead.objects.extra(order_by = ['prize'])
+    return render(request,'distribution.html',{'leads':leads})
     
