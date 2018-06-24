@@ -18,7 +18,7 @@ class Distributor(models.Model):
 class Lead(models.Model):
     name = models.CharField(max_length=30,blank=True)
     phone = models.CharField(max_length=10)
-    timeleft = models.DateTimeField(blank=True)
+    timeleft = models.DateTimeField(blank=True,null=True)
     zipcode = models.CharField(max_length=6,blank=True)
     time = models.IntegerField(default=50)
     city = models.CharField(max_length=30,blank=True)
@@ -29,5 +29,6 @@ class Lead(models.Model):
     choose = models.ForeignKey(
         Distributor,
         null = True,
+        blank=True,
         on_delete=models.CASCADE,
     )

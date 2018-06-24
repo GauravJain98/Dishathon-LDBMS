@@ -8,6 +8,7 @@ from . import views
 urlpatterns = [
     path('change/<int:id>/', views.change),
     path('lead/<int:id>/', views.lead),
+    path('update/<int:id>/', views.update),
     url(r'^addLead/', views.addLead,name='addLead'),
     url(r'^dLead/', views.dLead,name='dLead'),
     url(r'^distributor/', views.distributor,name='distributor'),

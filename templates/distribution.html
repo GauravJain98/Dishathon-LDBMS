@@ -27,8 +27,10 @@
 
 <body class="body1">
     <img src="{% static 'bg.jpg' %}" class="bg" alt="">
-    <nav class="navbar navbar-dark navbar-expand-md bg-dark back">
-        <a class="navbar-brand" href="#">LDMS</a>
+    <nav class="navbar navbar-dark navbar-expand-md back">
+        <a class="navbar-brand " href="#">
+            <img src="https://logopond.com/logos/ec1ab766e91dae725febee6cfdcde86c.png" style="width:250px;height: 80px;">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -37,8 +39,8 @@
         </div>
     </nav>
     <div class="container p-3">
-        <table class="table p-2">
-            <thead class="table-success">
+        <table border="3" class="table table-light table-border border-dark" style="padding-top: 150px;">
+            <thead class="">
                 <tr>
                     <th>#</th>
                     <th>Current Bid Price</th>
@@ -48,7 +50,7 @@
             </thead>
             <tbody>
                 {% for lead in leads %} {% if lead.timeleft > 0 %}
-                <tr class="table-primary">
+                <tr class="">
                     <td>{{lead.id}}</td>
                     <td>{{lead.price}}</td>
                     <td>
@@ -61,7 +63,9 @@
                             {% endif %}
                         </form>
                     </td>
-                    <td id="time{{lead.id}}">{{lead.timeleft}}</td>
+                    <td>
+                        {{lead.timeleft}}
+                    </td>
                     {% endif %}
                 </tr>
                 {% endfor %}

@@ -41,21 +41,37 @@
         </div>
     </nav>
     <div class="container p-3">
-        <table class="table p-2 tab">
-            <thead class="t2">
+        <table border="3" class="table table-light table-border border-dark" style="padding-top: 150px;">
+            <thead class="">
                 <tr>
                     <th class="th1">Name</th>
+                    <th class="th1">Phone</th>
+                    <th class="th1">Description</th>
+                    <th class="th1">Address</th>
+                    <th class="th1"></th>
                 </tr>
             </thead>
-            <tbody class="t1">
+            <tbody class="">
                 {% for lead in leads %}
                 <tr>
-                    <td>
-                        <form action="/change/{{lead.id}}/" method="POST">
-                            {% csrf_token %}
-                            <input type="text" class="size1" disabled name="bid" value="{{lead.phone}}">
-                        </form>
-                    </td>
+                    <form action="/update/{{lead.id}}/" method="POST">
+                        {% csrf_token %}
+                        <td>
+                            <input type="text" class="btn border" name="name" value="{{lead.name}}">
+                        </td>
+                        <td>
+                            <input type="text" class="btn border" disabled name="phone" value="{{lead.phone}}">
+                        </td>
+                        <td>
+                            <input type="text" class="btn border" name="description" placeholder="What did you talk to the customer?" value="{{lead.description}}">
+                        </td>
+                        <td>
+                            <input type="text" class="btn border" name="address" value="{{lead.address}}">
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </td>
+                    </form>
                 </tr>
                 {% endfor %}
             </tbody>

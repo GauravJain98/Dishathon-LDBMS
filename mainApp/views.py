@@ -35,6 +35,16 @@ def change(request,id):
     lead.save()
     return redirect('/distributor/')
 
+def update(request,id):
+    lead = Lead.objects.get(id=id)
+    lead.name = request.POST['name'] 
+    if 'description' in request.POST:
+        lead.description = request.POST['description']
+    if 'address' in request.POST:
+        lead.address = request.POST['address']
+    lead.save()
+    return redirect('/dLead')
+
 def lead(request,id):
     if request.method == 'POST':
         lead.acquired = request.POST['acquired'] == 'on'
