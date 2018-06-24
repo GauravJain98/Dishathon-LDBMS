@@ -4,6 +4,8 @@
 <html lang="en">
 
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <title>Lead Management System</title>
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <meta charset="utf-8">
@@ -27,8 +29,10 @@
 
 <body class="body1">
     <img src="{% static 'bg.jpg' %}" class="bg" alt="">
-    <nav class="navbar navbar-dark navbar-expand-md bg-dark back">
-        <a class="navbar-brand" href="#">LDMS</a>
+    <nav class="navbar navbar-dark navbar-expand-md back">
+        <a class="navbar-brand " href="#">
+            <img src="https://logopond.com/logos/ec1ab766e91dae725febee6cfdcde86c.png" style="width:250px;height: 80px;">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -37,32 +41,21 @@
         </div>
     </nav>
     <div class="container p-3">
-        <table class="table p-2">
-            <thead class="table-success">
+        <table class="table p-2 tab">
+            <thead class="t2">
                 <tr>
-                    <th>#</th>
-                    <th>Current Bid Price</th>
-                    <th>Your Bid</th>
-                    <th>Time Left</th>
+                    <th class="th1">Name</th>
                 </tr>
             </thead>
-            <tbody>
-                {% for lead in leads %} {% if lead.timeleft > 0 %}
-                <tr class="table-primary">
-                    <td>{{lead.id}}</td>
-                    <td>{{lead.price}}</td>
+            <tbody class="t1">
+                {% for lead in leads %}
+                <tr>
                     <td>
                         <form action="/change/{{lead.id}}/" method="POST">
                             {% csrf_token %}
-                            <input type="number" name="bid"> {% if lead.timeleft > 0 %}
-                            <button class="btn btn-danger" type="submit">Bid</button>
-                            {% else %}
-                            <button class="btn btn-danger" disabled type="submit">Bid</button>
-                            {% endif %}
+                            <input type="text" class="size1" disabled name="bid" value="{{lead.phone}}">
                         </form>
                     </td>
-                    <td id="time{{lead.id}}">{{lead.timeleft}}</td>
-                    {% endif %}
                 </tr>
                 {% endfor %}
             </tbody>

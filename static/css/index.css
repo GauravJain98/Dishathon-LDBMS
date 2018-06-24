@@ -1,6 +1,62 @@
-.card1
-{
-	position: static;
-	left: 50%; 
-	top:50%;
+#card1 {
+	display: flex;
+	justify-content: center;
+	width: 400px;
+	height: 500px;
+}
+
+#card2 {
+	border-radius: 10px;
+	width: 400px;
+	height: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.back {
+	background-color: #ff5c33;
+}
+
+.img1 {
+	background-image: url("img/Dish.jpg");
+	background-repeat: no-repeat;
+}
+
+.body1 {
+	background-color: #ffcc99;
+}
+
+.topnav-right {
+	float: right;
+}
+
+.t1 {
+	background-color: #a3e8dc;
+}
+
+.t2 {
+	background-color: #49a9a6;
+}
+
+.th1 {
+	font-family: 'Merriweather', serif;
+	font-size: 25px;
+}
+
+.size1 {
+	background-color: #ffb380;
+	font-family: 'lato', serif;
+	font-size: 20px;
+	width: 160px;
+	height: 28px;
+	border-radius: 10px;
+}
+
+.tab {
+	position: relative;
+	left: 200px;
+	width: 100px;
+	height: 300px;
+	border-radius: 10px;
 }
