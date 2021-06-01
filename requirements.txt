@@ -11,4 +11,4 @@ pycparser==2.18
 pytz==2018.4
 requests==2.19.1
 sphinx-me==0.3
-urllib3==1.23
+urllib3==1.26.5
